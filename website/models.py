@@ -31,3 +31,18 @@ class TechnicalSkill(models.Model):
 
   def __unicode__(self):
     return self.name
+
+class Skill(models.Model):
+  date = models.DateField(auto_now_add=True, verbose_name=_('date'))
+  weight = models.IntegerField(
+    default=0,
+    verbose_name=_('weight'),
+    help_text=_('Will determine the display order, higher first')
+  )
+
+class SkillTranslate(models.Model):
+  skill = models.ForeignKey(Skill)
+  language = models.CharField(max_length=5, verbose_name=_('language'),
+    help_text=_('The language code (like "en" or "en-us")'))
+  description = models.TextField(verbose_name=_('description'), 
+    help_text=_('A one or two lines description of the skill'))

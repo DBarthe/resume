@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-09 16:16+0200\n"
+"POT-Creation-Date: 2015-05-09 23:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: resume/settings.py:107
 msgid "English"
-msgstr "Anglais"
+msgstr ""
 
 #: resume/settings.py:108
 msgid "French"
@@ -28,7 +28,7 @@ msgstr "Français"
 
 #: website/models.py:11
 msgid "Language"
-msgstr "Langage"
+msgstr "langage"
 
 #: website/models.py:12
 msgid "System"
@@ -54,18 +54,73 @@ msgstr "categorie"
 msgid "name"
 msgstr "nom"
 
-#: website/models.py:24
+#: website/models.py:24 website/models.py:36
 msgid "date"
 msgstr "date"
 
-#: website/models.py:27
+#: website/models.py:27 website/models.py:39
 msgid "weight"
 msgstr "poids"
 
-#: website/models.py:28
+#: website/models.py:28 website/models.py:40
 msgid "Will determine the display order, higher first"
-msgstr "Determinera l'odre d'affichage, les plus forts en premier"
+msgstr "Determine l'ordre d'affichage, les plus lourds en premier"
 
 #: website/models.py:30
 msgid "icon"
 msgstr "icône"
+
+#: website/models.py:45
+msgid "language"
+msgstr "langage"
+
+#: website/models.py:46
+msgid "The language code (like \"en\" or \"en-us\")"
+msgstr "Le code du langage (ex: 'en' ou 'en-us')"
+
+#: website/models.py:47
+msgid "description"
+msgstr "description"
+
+#: website/models.py:48
+msgid "A one or two lines description of the skill"
+msgstr "Une ou deux lignes de description de la compétence"
+
+#: website/templates/website/index.html:22
+msgid "Technical Skills"
+msgstr "Compétences techniques"
+
+#: website/views.py:26
+msgctxt "category"
+msgid "Programming Language"
+msgid_plural "Programming Languages"
+msgstr[0] "Langage de Programmation"
+msgstr[1] "Langages de Programmations"
+
+#: website/views.py:28
+msgctxt "category"
+msgid "Operating System"
+msgid_plural "Operating Systems"
+msgstr[0] "Système d'Exploitation"
+msgstr[1] "Systèmes d'Exploitation"
+
+#: website/views.py:30
+msgctxt "category"
+msgid "Software"
+msgid_plural "Softwares"
+msgstr[0] "Logiciel"
+msgstr[1] "Logiciels"
+
+#: website/views.py:32
+msgctxt "category"
+msgid "Database"
+msgid_plural "Databases"
+msgstr[0] "Base de données"
+msgstr[1] "Bases de données"
+
+#: website/views.py:34
+msgctxt "category"
+msgid "Other"
+msgid_plural "Others"
+msgstr[0] "Autre"
+msgstr[1] "Autres"
