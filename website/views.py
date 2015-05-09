@@ -1,3 +1,9 @@
 from django.shortcuts import render
+from django.views.generic import View, ListView
 
-# Create your views here.
+from .models import TechnicalSkill
+
+class Index(ListView):
+  model = TechnicalSkill
+  template_name = 'website/index.html'
+

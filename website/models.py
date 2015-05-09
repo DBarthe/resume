@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
 
 class TechnicalSkill(models.Model):
   LANGUAGE = 'LA'
@@ -7,20 +8,26 @@ class TechnicalSkill(models.Model):
   SOFTWARE = 'SO'
   OTHER = 'OT'
   CATEGORY_CHOICES = (
-    (LANGUAGE, 'Language'),
-    (SYSTEM, 'System'),
-    (DATABASE, 'Database'),
-    (SOFTWARE, 'Software'),
-    (OTHER, 'Other')
+    (LANGUAGE, _('Language')),
+    (SYSTEM, _('System')),
+    (DATABASE, _('Database')),
+    (SOFTWARE, _('Software')),
+    (OTHER, _('Other')),
   )
   category = models.CharField(
-    max_length=2, choices=CATEGORY_CHOICES, default=OTHER)
-  name = models.CharField(max_length=255) # no need to translate
-  date = models.DateField(auto_now_add=True)
-  weight = models.IntegerField(default=0,
-    help_text='Will determine the display order, higher first')
-  icon = models.FileField(null=True)
+    max_length=2,
+    choices=CATEGORY_CHOICES,
+    default=OTHER,
+    verbose_name=_('category')
+  )
+  name = models.CharField(max_length=255, verbose_name=_('name')) # no need to translate
+  date = models.DateField(auto_now_add=True, verbose_name=_('date'))
+  weight = models.IntegerField(
+    default=0,
+    verbose_name=_('weight'),
+    help_text=_('Will determine the display order, higher first')
+  )
+  icon = models.FileField(null=True, verbose_name=_('icon'))
 
   def __unicode__(self):
-    return self.default_name
-
+    return self.name

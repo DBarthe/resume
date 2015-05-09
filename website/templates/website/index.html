@@ -1,0 +1,32 @@
+{% load i18n %}
+{% load l10n %}
+{% load static %}
+{% load website_extras %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_media_prefix as MEDIA_PREFIX %}
+prefix:{{ MEDIA_PREFIX }}
+<p>language is {{ LANGUAGE_CODE }}</p>
+<ul>
+{% for object in object_list %}
+  <p>{% trans object.get_category_display %}</p>
+  <p>{{ object.name }}</p>
+  <p>{{ object.date|localize }}</p>
+  <p>{{ object.weight }}</p>
+  {% if object.icon %}<img src='{{ MEDIA_PREFIX }}{{ object.icon }}'/>{% endif %}
+{% endfor %}
+</ul>
+<form action="{% url 'set_language' %}" method="post">
+{% csrf_token %}
+<input name="next" type="hidden" value="{% url_no_i18n 'index' %}" />
+<select name="language">
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+{% get_language_info_list for LANGUAGES as languages %}
+{% for language in languages %}
+<option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected="selected"{% endif %}>
+    {{ language.name_local }} ({{ language.code }})
+</option>
+{% endfor %}
+</select>
+<input type="submit" value="Go" />
+</form>
