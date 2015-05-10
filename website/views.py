@@ -11,7 +11,7 @@ class Index(TemplateView):
   def get_context_data(self, **kwargs):
     context = super(Index, self).get_context_data(**kwargs)
     context['tech_skill_category_list'] = self.make_tech_skill_category_list()
-    context['skill_list'] = Skill.objects.order_by('-weight')
+    context['skill_list'] = self.make_skill_list()
     return context
 
   def make_tech_skill_category_list(self):
@@ -34,4 +34,9 @@ class Index(TemplateView):
         'label': npgettext('category', 'Other', 'Others', len(other_list)) },
     ]
 
-
+  def make_skill_list(self):
+    language = self.request.LANGUAGE_CODE
+    def helper(skill):
+      skill.translation = skill.get_translation(language)
+      return skill
+    return (helper(skill) for skill in Skill.objects.order_by('-weight'))

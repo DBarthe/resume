@@ -35,3 +35,11 @@
   </li>
   {% endfor %}
 </ul>
+
+<h3>{% trans 'Skill' %}</h3>
+<ul>
+    {% for skill in skill_list %}
+    <li>{{ skill.translation.description }}</li>
+    {% endfor %}
+
+</ul>
