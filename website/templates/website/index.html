@@ -36,10 +36,37 @@
   {% endfor %}
 </ul>
 
-<h3>{% trans 'Skill' %}</h3>
+<h3>
+{% blocktrans count counter=skill_list|length %}
+  Skill{% plural %}Skills
+{% endblocktrans %}
+</h3>
 <ul>
     {% for skill in skill_list %}
     <li>{{ skill.translation.description }}</li>
     {% endfor %}
+</ul>
 
+<h3>
+{% blocktrans count counter=experience_list|length %}
+  Experience{% plural %}Experiences
+{% endblocktrans %}
+</h3>
+<ul>
+    {% for exp in experience_list %}
+    <li>
+      <h4>
+        <span>{{ exp.employer }}</span>
+        - <span>{{ exp.translation.title }}</span>
+        <span>{{ exp.year_from }} -
+          {% if exp.year_to %}{{ exp.year_to }}{% else %}{% trans 'now' %}
+          {% endif %}</span>
+      </h4>
+      <ul>
+      {% for task in exp.translation.experiencetask_set.all %}
+        <li>{{ task.description }}</li>
+      {% endfor %}
+      </ul>
+    </li>
+    {% endfor %}
 </ul>

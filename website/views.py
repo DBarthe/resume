@@ -4,6 +4,7 @@ from django.utils.translation import npgettext
 
 from .models import TechnicalSkill as TechSkill
 from .models import Skill
+from .models import Experience
 
 class Index(TemplateView):
   template_name = 'website/index.html'
@@ -12,6 +13,7 @@ class Index(TemplateView):
     context = super(Index, self).get_context_data(**kwargs)
     context['tech_skill_category_list'] = self.make_tech_skill_category_list()
     context['skill_list'] = self.make_skill_list()
+    context['experience_list'] = self.make_experience_list()
     return context
 
   def make_tech_skill_category_list(self):
@@ -39,4 +41,11 @@ class Index(TemplateView):
     def helper(skill):
       skill.translation = skill.get_translation(language)
       return skill
-    return (helper(skill) for skill in Skill.objects.order_by('-weight'))
+    return [helper(skill) for skill in Skill.objects.order_by('-weight')]
+
+  def make_experience_list(self):
+    language = self.request.LANGUAGE_CODE
+    def helper(exp):
+      exp.translation = exp.get_translation(language)
+      return exp
+    return [helper(exp) for exp in Experience.objects.order_by('-year_from')]
