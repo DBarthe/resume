@@ -23,6 +23,8 @@ from website import urls as website_urls
 
 urlpatterns = [
   url(r'^i18n/', include(i18n)),
+  url(r'^nested_admin/', include('nested_admin.urls')),
+  url(r'^grappelli/', include('grappelli.urls')), 
 ]
 
 urlpatterns += i18n_patterns(
