@@ -132,4 +132,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 BOWER_COMPONENTS_ROOT = os.path.join(BASE_DIR, 'components')
 
 BOWER_INSTALLED_APPS = (
+  'foundation',
 )
