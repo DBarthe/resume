@@ -120,3 +120,26 @@ class ExperienceTask(models.Model):
 
   def __unicode__(self):
     return self.description[:40] + "..."
+
+class Extra(AbstractMultilingual):
+  date = models.DateField(auto_now_add=True, verbose_name=_('date'))
+  weight = models.IntegerField(
+    default=0,
+    verbose_name=_('weight'),
+    help_text=_('Will determine the display order, higher first')
+  )
+
+  def get_tranlsation_set(self):
+    return self.extra_set
+
+  def __unicode__(self):
+    return ("en: " + str(self.get_translation('en'))[:40] + "...") or _("No description")
+
+class ExtraTranslation(AbstractTranslation):
+  extra = models.ForeignKey(Extra)
+  name = models.CharField(max_length=255, verbose_name=_('name'))
+  description = models.TextField(null=True, verbose_name=_('description'),
+    help_text=_('An optional description of this extra'))
+
+  def __unicode__(self):
+    return self.name
