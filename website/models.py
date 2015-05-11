@@ -129,8 +129,8 @@ class Extra(AbstractMultilingual):
     help_text=_('Will determine the display order, higher first')
   )
 
-  def get_tranlsation_set(self):
-    return self.extra_set
+  def get_translation_set(self):
+    return self.extratranslation_set
 
   def __unicode__(self):
     return ("en: " + str(self.get_translation('en'))[:40] + "...") or _("No description")
@@ -138,7 +138,7 @@ class Extra(AbstractMultilingual):
 class ExtraTranslation(AbstractTranslation):
   extra = models.ForeignKey(Extra)
   name = models.CharField(max_length=255, verbose_name=_('name'))
-  description = models.TextField(null=True, verbose_name=_('description'),
+  description = models.TextField(blank=True, verbose_name=_('description'),
     help_text=_('An optional description of this extra'))
 
   def __unicode__(self):

@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.utils.translation import npgettext
 
-from .models import TechnicalSkill as TechSkill
+from .models import TechnicalSkill as TechSkill, Extra
 from .models import Skill
 from .models import Experience
 
@@ -14,6 +14,7 @@ class Index(TemplateView):
     context['tech_skill_category_list'] = self.make_tech_skill_category_list()
     context['skill_list'] = self.make_skill_list()
     context['experience_list'] = self.make_experience_list()
+    context['extra_list'] = self.make_extra_list()
     return context
 
   def make_tech_skill_category_list(self):
@@ -36,16 +37,18 @@ class Index(TemplateView):
         'label': npgettext('category', 'Other', 'Others', len(other_list)) },
     ]
 
-  def make_skill_list(self):
+  def make_translated_list(self, queryset):
     language = self.request.LANGUAGE_CODE
-    def helper(skill):
-      skill.translation = skill.get_translation(language)
-      return skill
-    return [helper(skill) for skill in Skill.objects.order_by('-weight')]
+    def helper(obj):
+      obj.translation = obj.get_translation(language)
+      return obj
+    return [helper(obj) for obj in queryset]
+
+  def make_skill_list(self):
+    return self.make_translated_list(Skill.objects.order_by('-weight'))
 
   def make_experience_list(self):
-    language = self.request.LANGUAGE_CODE
-    def helper(exp):
-      exp.translation = exp.get_translation(language)
-      return exp
-    return [helper(exp) for exp in Experience.objects.order_by('-year_from')]
+    return self.make_translated_list(Experience.objects.order_by('-year_from'))
+
+  def make_extra_list(self):
+    return self.make_translated_list(Extra.objects.order_by('-weight'))

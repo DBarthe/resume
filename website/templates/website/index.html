@@ -70,3 +70,20 @@
     </li>
     {% endfor %}
 </ul>
+
+
+<h3>
+{% blocktrans count counter=extra_list|length %}
+  Hobby and Activity{% plural %}Hobbies and Activities
+{% endblocktrans %}
+</h3>
+<ul>
+    {% for extra in extra_list %}
+    <li>
+      <span>{{ extra.translation.name }}</span>
+      {% if extra.translation.description %}
+      <p>{{ extra.translation.description }}</p>
+      {% endif %}
+    </li>
+    {% endfor %}
+</ul>
