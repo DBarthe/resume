@@ -31,15 +31,11 @@
 <header class="contain-to-grid sticky">
   <nav class="top-bar" data-topbar role="navigation">
     <ul class="title-area">
-      <li class="name">
-        <h2><a href="#">Barthélémy Delemotte</a></h2>
-      </li>
-      <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
+      <li class="name"></li>
+      <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
     </ul>
     <section class="top-bar-section">
       <ul class="left">
-        <li class='divider'></li>
-        <li><a href="#contact-anchor">Contact</a></li>
         <li class='divider'></li>
         <li class='has-dropdown'>
           <a>Skills</a>
@@ -54,7 +50,8 @@
         <li><a href="#education-anchor">Education</a></li>
         <li class='divider'></li>
         <li><a href="#extras-anchor">Hobbies and Activities</a></li>
-
+        <li class='divider'></li>
+        <li><a href="#contact-anchor">Contact</a></li>
       </ul>
 
       <ul class="right">
@@ -75,23 +72,14 @@
         </li>
       </ul>
     </section>
- </nav>
+  </nav>
 </header>
 
-<div id='contact-anchor' class='anchor'></div>
-<section id="contact" class="resume-category">
+
+<section class="resume-category">
   <div class='row medium-collapse large-uncollapse' data-equalizer>
     <div class="small-12 medium-4 large-3 column text-center" data-equalizer-watch>
-      <ul id='cordinate' class='vcard text-left'>
-        <li class="fn">Barthélémy DELEMOTTE</li>
-        <li class="street-address">29 bis rue de belle vue</li>
-        <li class="locality"><span class="zip">59800</span> Lille, <span class="state">France</span></li>
-        <li>06.59.34.29.84</li>
-        <li class="email"><a href="#">barthelemy.delemotte@gmail.com</a></li>
-        <li><a href="https://github.com/DBarthe">
-          <img class='mini-thumb' src="{% static 'website/images/Octocat_64.png' %}"/>GitHub
-        </a></li>
-      </ul>
+      <h2>Barthélémy Delemotte</h2>
     </div>
     <div class='small-12 medium-5 large-6 column text-center' data-equalizer-watch>
       <h2 class='subheader'>Resume</h2>
@@ -238,21 +226,6 @@
   </div>
 </section>
 
-<!--       <div class="row">
-        <div class="small-12 column">
-          <h6 class="right">
-            <span>{{ ed.translation.title }}</span>
-            <strong >{{ ed.translation.school }}</strong>
-          </h6>
-          <h6 class='left'>
-            <strong>{{ ed.year_from }}</strong> -
-            <strong>{% if ed.year_to %}{{ ed.year_to }}{% else %}now{% endif %}</strong>
-          </h6>  
-        </div>
-      </div>
-
- -->
-
 <div class='row delim-hline'></div>
 
 <div id='extras-anchor' class='anchor'></div>
@@ -273,6 +246,44 @@
     </div>
   </div>
 </section>
+
+<footer>
+  <div class="row" data-equalizer>
+    <div id='contact-anchor' class='anchor'></div>
+    <div class="small-12 medium-6 large-4 column text-center" data-equalizer-watch>
+      <ul id='cordinate' class='vcard'>
+        <li class="fn">Barthélémy DELEMOTTE</li>
+        <li class="email"><a href="#">barthelemy.delemotte@gmail.com</a></li>
+        <li class="street-address">29 bis rue de belle vue</li>
+        <li class="locality"><span class="zip">59800</span> Lille, <span class="state">France</span></li>
+        <li>06.59.34.29.84</li>
+      </ul>
+    </div>
+    <div class='small-12 medium-3 large-4 column' data-equalizer-watch>
+        <div class="link text-center">
+          <a href="https://github.com/DBarthe">
+            <img src="{% static 'website/images/Octocat.png' %}"/><br/>
+            <strong>GitHub</strong>
+          </a>
+        </div>
+    </div>
+    <div class='small-12 medium-3 large-4 column text-center' data-equalizer-watch>
+        <div class="link">
+          <a href="http://git.dbarth.eu/git/web/resume.git/tree/">
+            <img src="{% static 'website/images/git.png' %}"/><br/>
+            <strong>View the source code<br />of this site</strong>
+          </a>
+        </div>
+        <a href="http://www.djangoproject.com/"><img src="https://www.djangoproject.com/m/img/badges/djangomade124x25.gif" border="0" alt="Made with Django." title="Made with Django." /></a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-3 small-centered column text-center">
+    </div>
+  </div>
+
+</footer>
 
 {% endblock %}
 

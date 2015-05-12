@@ -19,17 +19,6 @@
   max-height: 150px;
 }
 
-#cordinate {
-  border: none;
-  margin-bottom: 0;
-  padding: 0;
-}
-
-.mini-thumb {
-  max-width: 36px;
-  max-height: 36px;
-}
-
 .resume-category {
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -62,4 +51,26 @@
 .education-item {
   margin-bottom: 0.5rem !important;
   border-bottom: solid 1px lightgrey;
+}
+
+footer {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border-top: solid 1px #D8D8D8;
+  background-color: #F2F2F2;
+  width: 100%;
+}
+
+#cordinate {
+  margin-bottom: 0;
+  background-color: white;
+}
+
+footer div.link img {
+  max-width: 128px;
+  max-height: 128px;
+}
+
+footer div.column, footer div.columns {
+  margin-bottom: 1rem;
 }
