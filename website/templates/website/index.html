@@ -32,26 +32,26 @@
   <nav class="top-bar" data-topbar role="navigation">
     <ul class="title-area">
       <li class="name"></li>
-      <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+      <li class="toggle-topbar menu-icon"><a href="#"><span>{% trans 'Menu' %}</span></a></li>
     </ul>
     <section class="top-bar-section">
       <ul class="left">
         <li class='divider'></li>
         <li class='has-dropdown'>
-          <a>Skills</a>
+          <a>{% trans 'Skills' %}</a>
           <ul class='dropdown'>
-            <li><a href="#technical-skills-anchor">Computer Skills</a></li>
-            <li><a href="#skills-anchor">Human Skills</a></li>
+            <li><a href="#technical-skills-anchor">{% trans 'Computer Skills' %}</a></li>
+            <li><a href="#skills-anchor">{% trans 'Human Skills' %}</a></li>
           </ul>
         </li>
         <li class='divider'></li>
-        <li><a href="#experiences-anchor">Experiences</a></li>
+        <li><a href="#experiences-anchor">{% trans 'Experiences' %}</a></li>
         <li class='divider'></li>
-        <li><a href="#education-anchor">Education</a></li>
+        <li><a href="#education-anchor">{% trans 'Education' %}</a></li>
         <li class='divider'></li>
-        <li><a href="#extras-anchor">Hobbies and Activities</a></li>
+        <li><a href="#extras-anchor">{% trans 'Hobbies and Activities' %}</a></li>
         <li class='divider'></li>
-        <li><a href="#contact-anchor">Contact</a></li>
+        <li><a href="#contact-anchor">{% trans 'Contact' %}</a></li>
       </ul>
 
       <ul class="right">
@@ -82,8 +82,8 @@
       <h2>Barthélémy Delemotte</h2>
     </div>
     <div class='small-12 medium-5 large-6 column text-center' data-equalizer-watch>
-      <h2 class='subheader'>Resume</h2>
-      <h3>Computer Science Student</h3>
+      <h2 class='subheader'>{% trans 'Resume' %}</h2>
+      <h3>{% trans 'Computer Science Student' %}</h3>
     </div>
     <div class='small-12 medium-3 column small-text-center medium-text-right' data-equalizer-watch>
       <img class='rounded' id="profile-img" src="{% static 'website/images/barth.jpg' %}"  />
@@ -97,7 +97,7 @@
 <section id="technical-skills">
   <div class="row">
     <div class='small-12 column'>
-      <h4>Computer skills</h4>
+      <h4>{% trans 'Computer skills' %}</h4>
     </div>
   </div>
 
@@ -134,7 +134,7 @@
 <section id="skills">
   <div class="row" data-equalizer>
     <div class="title column small-4 medium-3 large-2" data-equalizer-watch>
-      <h4>Human skills</h4>
+      <h4>{% trans 'Human skills' %}</h4>
     </div>
     <div class='column small-8 medium-9 large-10' data-equalizer-watch>
       <ul>
@@ -153,7 +153,7 @@
 <section id="experiences">
   <div class="row">
     <div class='small-12 column'>
-      <h4 class="left">Experiences</h4>
+      <h4 class="left">{% trans 'Experiences' %}</h4>
     </div>
   </div>
 
@@ -194,7 +194,7 @@
 <section id="education">
   <div class="row">
     <div class='small-12 column'>
-      <h4 class="left">Education</h4>
+      <h4 class="left">{% trans 'Education' %}</h4>
     </div>
   </div>
 
@@ -232,7 +232,7 @@
 <section id="extras">
     <div class="row" data-equalizer>
     <div class="title column small-4 medium-3 large-2" data-equalizer-watch>
-      <h4>Hobbies and Activities</h4>
+      <h4>{% trans 'Hobbies and Activities' %}</h4>
     </div>
     <div class='column small-8 medium-9 large-10' data-equalizer-watch>
       <ul>
@@ -271,7 +271,7 @@
         <div class="link">
           <a href="http://git.dbarth.eu/git/web/resume.git/tree/">
             <img src="{% static 'website/images/git.png' %}"/><br/>
-            <strong>View the source code<br />of this site</strong>
+            <strong>{% trans 'View the source code' %}<br />{% trans 'of this site' %}</strong>
           </a>
         </div>
         <a href="http://www.djangoproject.com/"><img src="https://www.djangoproject.com/m/img/badges/djangomade124x25.gif" border="0" alt="Made with Django." title="Made with Django." /></a>
