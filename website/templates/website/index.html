@@ -7,6 +7,8 @@
 {% block 'title' %}Barthelemy Delemotte {% trans 'Resume' %}{% endblock %}
 
 {% block 'scripts' %}
+<script src="{% static 'foundation/js/foundation/foundation.topbar.js' %}"></script>
+<script src="{% static 'foundation/js/foundation/foundation.equalizer.js' %}"></script>
 <script type="text/javascript" src="{% static 'website/js/app.js' %}"></script>
 <script>
   var website = (function(website){
@@ -39,35 +41,38 @@
         <li class='divider'></li>
         <li><a href="#contact-anchor">Contact</a></li>
         <li class='divider'></li>
-        <li><a href="#technical-skills-anchor">Computer Skills</a></li>
-        <li class='divider'></li>
-        <li><a href="#skills-anchor">Human Skills</a></li>
+        <li class='has-dropdown'>
+          <a>Skills</a>
+          <ul class='dropdown'>
+            <li><a href="#technical-skills-anchor">Computer Skills</a></li>
+            <li><a href="#skills-anchor">Human Skills</a></li>
+          </ul>
+        </li>
         <li class='divider'></li>
         <li><a href="#experiences-anchor">Experiences</a></li>
         <li class='divider'></li>
+        <li><a href="#education-anchor">Education</a></li>
+        <li class='divider'></li>
         <li><a href="#extras-anchor">Hobbies and Activities</a></li>
-      </ul>
-    </section>
 
-    <section class="top-bar-section">
+      </ul>
+
       <ul class="right">
         <li class="has-dropdown">
-          <a>Language</a>
+          {% get_current_language as LANGUAGE_CODE %}
+          {% get_available_languages as LANGUAGES %}
+          {% get_language_info_list for LANGUAGES as languages %}
+          <a>Language ({{ LANGUAGE_CODE }})</a>
           <ul class="dropdown">
-            {% get_current_language as LANGUAGE_CODE %}
-            {% get_available_languages as LANGUAGES %}
-            {% get_language_info_list for LANGUAGES as languages %}
             {% for language in languages %}
             <li>
-              <a {% if language.code == LANGUAGE_CODE %}class="active"{% endif %}
-                onclick="website.selectLanguage('{{ language.code }}')">
+              <a onclick="website.selectLanguage('{{ language.code }}')">
                 {{ language.name_local }}
               </a>
             </li>
             {% endfor %}
           </ul>
         </li>
-
       </ul>
     </section>
  </nav>
@@ -194,6 +199,59 @@
   </div>
   {% endfor %}
 </section>
+
+<div class='row delim-hline'></div>
+
+<div id='education-anchor' class='anchor'></div>
+<section id="education">
+  <div class="row">
+    <div class='small-12 column'>
+      <h4 class="left">Education</h4>
+    </div>
+  </div>
+
+  <div class="row panel">
+    <div class='small-12 column'>  
+      {% for ed in education_list %}
+      <div class="education-item row">
+
+        <div class='small-4 medium-2 column'>
+          <strong>{{ ed.year_from }}</strong> -
+          <strong>{% if ed.year_to %}{{ ed.year_to }}{% else %}now{% endif %}</strong>
+        </div>
+
+        <div class='small-8 medium-10 column'>        
+          <div class='row'>
+            <div class='small-12 medium-6 column'>
+              <h6><strong>{{ ed.translation.school }}</strong><h6>
+            </div>
+
+            <div class='small-12 medium-6 column'>
+              {{ ed.translation.title }}
+            </div>
+          </div>
+        </div>
+
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!--       <div class="row">
+        <div class="small-12 column">
+          <h6 class="right">
+            <span>{{ ed.translation.title }}</span>
+            <strong >{{ ed.translation.school }}</strong>
+          </h6>
+          <h6 class='left'>
+            <strong>{{ ed.year_from }}</strong> -
+            <strong>{% if ed.year_to %}{{ ed.year_to }}{% else %}now{% endif %}</strong>
+          </h6>  
+        </div>
+      </div>
+
+ -->
 
 <div class='row delim-hline'></div>
 

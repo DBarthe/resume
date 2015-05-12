@@ -58,3 +58,8 @@
 #skills ul, #extras ul {
   padding-top: 0.5rem;
 }
+
+.education-item {
+  margin-bottom: 0.5rem !important;
+  border-bottom: solid 1px lightgrey;
+}

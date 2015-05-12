@@ -1,13 +1,10 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.utils.translation import npgettext
-
-from .models import TechnicalSkill as TechSkill, Extra
-from .models import Skill
-from .models import Experience
-
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import ensure_csrf_cookie
+
+from .models import TechnicalSkill as TechSkill, Extra, Skill, Experience, Education
 
 class Index(TemplateView):
   template_name = 'website/index.html'
@@ -21,6 +18,7 @@ class Index(TemplateView):
     context['tech_skill_category_list'] = self.make_tech_skill_category_list()
     context['skill_list'] = self.make_skill_list()
     context['experience_list'] = self.make_experience_list()
+    context['education_list'] = self.make_education_list()
     context['extra_list'] = self.make_extra_list()
     return context
 
@@ -59,6 +57,9 @@ class Index(TemplateView):
 
   def make_experience_list(self):
     return self.make_translated_list(Experience.objects.order_by('-year_from'))
+
+  def make_education_list(self):
+    return self.make_translated_list(Education.objects.order_by('-year_from'))
 
   def make_extra_list(self):
     return self.make_translated_list(Extra.objects.order_by('-weight'))

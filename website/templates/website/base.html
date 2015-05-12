@@ -20,9 +20,11 @@
   {% block 'body' %}{% endblock %}
   <script src="{% static 'jquery/dist/jquery.js' %}"></script>
   <script src="{% static 'foundation/js/foundation.js' %}"></script>
+  {% block 'scripts' %}{% endblock %}
+  {% block 'start-foundation' %}
   <script>
     $(document).foundation();
   </script>
-  {% block 'scripts' %}{% endblock %}
+  {% endblock %}
 </body>
 </html>
