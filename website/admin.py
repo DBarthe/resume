@@ -3,7 +3,7 @@ from nested_admin import NestedAdmin, NestedStackedInline
 
 from .models import (TechnicalSkill, Skill, SkillTranslation,
   Experience, ExperienceTranslation, ExperienceTask,
-  Extra, ExtraTranslation)
+  Extra, ExtraTranslation, Education, EducationTranslation)
 
 class SkillTranslationInline(admin.StackedInline):
   model = SkillTranslation
@@ -32,6 +32,17 @@ class ExperienceTranslationInline(NestedStackedInline):
 class ExperienceAdmin(NestedAdmin):
   inlines = [ExperienceTranslationInline]
 
+class EducationTranslationInline(admin.StackedInline):
+  model = EducationTranslation
+  extra = 0
+  min_num = 2
+  inline_classes = ('grp-collapse grp-open',)
+  classes = ('grp-collapse grp-open',)
+
+class EducationAdmin(admin.ModelAdmin):
+  inlines = [EducationTranslationInline]
+
+
 class ExtraTranslationInline(admin.StackedInline):
   model = ExtraTranslation
   extra = 0
@@ -45,4 +56,5 @@ class ExtraAdmin(admin.ModelAdmin):
 admin.site.register(TechnicalSkill)
 admin.site.register(Skill, SkillAdmin)
 admin.site.register(Experience, ExperienceAdmin)
+admin.site.register(Education, EducationAdmin)
 admin.site.register(Extra, ExtraAdmin)

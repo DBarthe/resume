@@ -112,9 +112,6 @@ class ExperienceTranslation(AbstractTranslation):
   experience = models.ForeignKey(Experience)
   title = models.CharField(max_length=255, verbose_name=_('title'))
 
-  def __unicode__(self):
-    return self.title
-
 class ExperienceTask(models.Model):
   experiencetranslation = models.ForeignKey(ExperienceTranslation)
   description = models.TextField(verbose_name=_('description'), 
@@ -122,6 +119,28 @@ class ExperienceTask(models.Model):
 
   def __unicode__(self):
     return self.description[:40] + "..."
+
+
+class Education(AbstractMultilingual):
+  year_from = models.PositiveIntegerField(verbose_name=_('start year'), 
+    help_text=_('the year when the formation began'))
+  year_to = models.PositiveIntegerField(null=True, blank=True, verbose_name=_('ending year'),
+    help_text=_('the year when the formation ended, otherwise leave it blank'))
+
+  def get_translation_set(self):
+    return self.educationtranslation_set
+
+  def __unicode__(self):
+    return (str(self.get_translation('en')) or _("No description"))
+
+class EducationTranslation(AbstractTranslation):
+  education = models.ForeignKey(Education)
+  school = models.CharField(max_length=255, verbose_name=_('school'))
+  title = models.CharField(max_length=255, verbose_name=_('title'))
+
+  def __unicode__(self):
+    return self.school
+
 
 class Extra(AbstractMultilingual):
   date = models.DateField(auto_now_add=True, verbose_name=_('date'))
