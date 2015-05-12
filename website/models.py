@@ -3,12 +3,14 @@ from django.utils.translation import ugettext_lazy as _
 
 class TechnicalSkill(models.Model):
   LANGUAGE = 'LA'
+  FRAMEWORK = 'FA'
   SYSTEM = 'SY'
   DATABASE = 'DA'
   SOFTWARE = 'SO'
   OTHER = 'OT'
   CATEGORY_CHOICES = (
     (LANGUAGE, _('Language')),
+    (FRAMEWORK, _('Framework')),
     (SYSTEM, _('System')),
     (DATABASE, _('Database')),
     (SOFTWARE, _('Software')),

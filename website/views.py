@@ -6,8 +6,15 @@ from .models import TechnicalSkill as TechSkill, Extra
 from .models import Skill
 from .models import Experience
 
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import ensure_csrf_cookie
+
 class Index(TemplateView):
   template_name = 'website/index.html'
+
+  @method_decorator(ensure_csrf_cookie)
+  def dispatch(self, *args, **kwargs):
+    return super(Index, self).dispatch(*args, **kwargs)
 
   def get_context_data(self, **kwargs):
     context = super(Index, self).get_context_data(**kwargs)
@@ -20,6 +27,7 @@ class Index(TemplateView):
   def make_tech_skill_category_list(self):
     full_tech_skill_list = TechSkill.objects.order_by('-weight')
     language_list = full_tech_skill_list.filter(category=TechSkill.LANGUAGE)
+    framework_list = full_tech_skill_list.filter(category=TechSkill.FRAMEWORK)
     system_list = full_tech_skill_list.filter(category=TechSkill.SYSTEM)
     software_list = full_tech_skill_list.filter(category=TechSkill.SOFTWARE)
     database_list = full_tech_skill_list.filter(category=TechSkill.DATABASE)
@@ -27,6 +35,8 @@ class Index(TemplateView):
     return [
       { 'list': language_list,
         'label': npgettext('category', 'Programming Language', 'Programming Languages', len(language_list)) },
+      { 'list': framework_list,
+        'label': npgettext('category', 'Framework', 'Frameworks', len(framework_list)) },
       { 'list': system_list,
         'label': npgettext('category', 'Operating System', 'Operating Systems', len(system_list)) },
       { 'list': software_list,
