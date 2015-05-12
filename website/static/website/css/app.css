@@ -1,0 +1,60 @@
+.delim-hline {
+  height: 0;
+  padding: 0;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-bottom: solid 1px lightgrey;
+}
+
+/*
+ * Fix bug with internal link and sticky bar 
+ */
+.anchor {
+  position: absolute;
+  margin: -4.15rem
+}
+
+#profile-img {
+  max-width: 150px;
+  max-height: 150px;
+}
+
+#cordinate {
+  border: none;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+.mini-thumb {
+  max-width: 36px;
+  max-height: 36px;
+}
+
+.resume-category {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.techno {
+  padding: 5px !important;
+}
+.techno-icon {
+  max-width: 20px;
+  max-height: 20px;  
+}
+.techno-name {
+  font-size: 0.65em;
+  font-weight: bold;
+}
+
+.techno-category *.panel {
+  margin: 0;
+  padding: 5px;
+}
+
+#skills div.title, #extras div.title {
+  border-right: solid 1px lightgrey;
+}
+#skills ul, #extras ul {
+  padding-top: 0.5rem;
+}

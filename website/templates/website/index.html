@@ -1,89 +1,220 @@
+{% extends 'website/base.html' %}
 {% load i18n %}
 {% load l10n %}
-{% load static %}
 {% load website_extras %}
+{% load static %}
+
+{% block 'title' %}Barthelemy Delemotte {% trans 'Resume' %}{% endblock %}
+
+{% block 'scripts' %}
+<script type="text/javascript" src="{% static 'website/js/app.js' %}"></script>
+<script>
+  var website = (function(website){
+    var website = website || {}
+    website.selectLanguage = function(language){
+      website.post('{% url 'set_language' %}', {
+        next : '{% url_no_i18n "index" %}',
+        language: language,
+        csrfmiddlewaretoken: website.getCookie('csrftoken')
+      })
+    }
+    return website
+  })(website)
+</script>
+{% endblock %}
+
+{% block 'body' %}
 {% get_media_prefix as MEDIA_PREFIX %}
-<form action="{% url 'set_language' %}" method="post">
-{% csrf_token %}
-<input name="next" type="hidden" value="{% url_no_i18n 'index' %}" />
-<select name="language">
-{% get_current_language as LANGUAGE_CODE %}
-{% get_available_languages as LANGUAGES %}
-{% get_language_info_list for LANGUAGES as languages %}
-{% for language in languages %}
-<option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected="selected"{% endif %}>
-  {{ language.name_local }} ({{ language.code }})
-</option>
-{% endfor %}
-</select>
-<input type="submit" value="Go" />
-</form>
 
-<h3>{% trans 'Technical Skills' %}</h3>
-<ul>
-  {% for category in tech_skill_category_list %}
-  <li>
-    <h4>{{ category.label }}</h4>
-    <ul>
-    {% for skill in category.list %}
-    <li>
-      <span>{{ skill.name }}</span>
-      {% if skill.icon %}<img src='{{ MEDIA_PREFIX }}{{ skill.icon }}'/>{% endif %}
-    </li>
-    {% endfor %}
+<header class="contain-to-grid sticky">
+  <nav class="top-bar" data-topbar role="navigation">
+    <ul class="title-area">
+      <li class="name">
+        <h2><a href="#">Barthélémy Delemotte</a></h2>
+      </li>
+      <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
     </ul>
-  </li>
-  {% endfor %}
-</ul>
+    <section class="top-bar-section">
+      <ul class="left">
+        <li class='divider'></li>
+        <li><a href="#contact-anchor">Contact</a></li>
+        <li class='divider'></li>
+        <li><a href="#technical-skills-anchor">Computer Skills</a></li>
+        <li class='divider'></li>
+        <li><a href="#skills-anchor">Human Skills</a></li>
+        <li class='divider'></li>
+        <li><a href="#experiences-anchor">Experiences</a></li>
+        <li class='divider'></li>
+        <li><a href="#extras-anchor">Hobbies and Activities</a></li>
+      </ul>
+    </section>
 
-<h3>
-{% blocktrans count counter=skill_list|length %}
-  Skill{% plural %}Skills
-{% endblocktrans %}
-</h3>
-<ul>
-    {% for skill in skill_list %}
-    <li>{{ skill.translation.description }}</li>
-    {% endfor %}
-</ul>
+    <section class="top-bar-section">
+      <ul class="right">
+        <li class="has-dropdown">
+          <a>Language</a>
+          <ul class="dropdown">
+            {% get_current_language as LANGUAGE_CODE %}
+            {% get_available_languages as LANGUAGES %}
+            {% get_language_info_list for LANGUAGES as languages %}
+            {% for language in languages %}
+            <li>
+              <a {% if language.code == LANGUAGE_CODE %}class="active"{% endif %}
+                onclick="website.selectLanguage('{{ language.code }}')">
+                {{ language.name_local }}
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+        </li>
 
-<h3>
-{% blocktrans count counter=experience_list|length %}
-  Experience{% plural %}Experiences
-{% endblocktrans %}
-</h3>
-<ul>
-    {% for exp in experience_list %}
-    <li>
-      <h4>
-        <span>{{ exp.employer }}</span>
-        - <span>{{ exp.translation.title }}</span>
-        <span>{{ exp.year_from }} -
-          {% if exp.year_to %}{{ exp.year_to }}{% else %}{% trans 'now' %}
-          {% endif %}</span>
-      </h4>
-      <ul>
-      {% for task in exp.translation.experiencetask_set.all %}
-        <li>{{ task.description }}</li>
+      </ul>
+    </section>
+ </nav>
+</header>
+
+<div id='contact-anchor' class='anchor'></div>
+<section id="contact" class="resume-category">
+  <div class='row medium-collapse large-uncollapse' data-equalizer>
+    <div class="small-12 medium-4 large-3 column text-center" data-equalizer-watch>
+      <ul id='cordinate' class='vcard text-left'>
+        <li class="fn">Barthélémy DELEMOTTE</li>
+        <li class="street-address">29 bis rue de belle vue</li>
+        <li class="locality"><span class="zip">59800</span> Lille, <span class="state">France</span></li>
+        <li>06.59.34.29.84</li>
+        <li class="email"><a href="#">barthelemy.delemotte@gmail.com</a></li>
+        <li><a href="https://github.com/DBarthe">
+          <img class='mini-thumb' src="{% static 'website/images/Octocat_64.png' %}"/>GitHub
+        </a></li>
+      </ul>
+    </div>
+    <div class='small-12 medium-5 large-6 column text-center' data-equalizer-watch>
+      <h2 class='subheader'>Resume</h2>
+      <h3>Computer Science Student</h3>
+    </div>
+    <div class='small-12 medium-3 column small-text-center medium-text-right' data-equalizer-watch>
+      <img class='rounded' id="profile-img" src="{% static 'website/images/barth.jpg' %}"  />
+    </div>
+  </div>
+</section>
+
+<div class='row delim-hline'></div>
+
+<div id='technical-skills-anchor' class='anchor'></div>
+<section id="technical-skills">
+  <div class="row">
+    <div class='small-12 column'>
+      <h4>Computer skills</h4>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class='small-12 column'>
+      <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
+      {% for category in tech_skill_category_list %}
+        <li class="techno-category">
+          <h6 class='subheader'>{{ category.label }}</h6>
+          <div class="panel">
+            <ul class="small-block-grid-3">
+            {% for skill in category.list %}
+              <li class="techno">
+                <div class='text-center'>
+                  {% if skill.icon %}
+                  <img class="techno-icon" src='{{ MEDIA_PREFIX }}{{ skill.icon }}'/><br/>
+                  <span class='techno-name'>{{ skill.name }}</span>
+                  {% endif %}
+                </div>
+              </li>
+            {% endfor %}
+            </ul>
+          </div>
+        </li>
       {% endfor %}
       </ul>
-    </li>
-    {% endfor %}
-</ul>
+    </div>
+  </div>
+</section>
 
+<div class='row delim-hline'></div>
 
-<h3>
-{% blocktrans count counter=extra_list|length %}
-  Hobby and Activity{% plural %}Hobbies and Activities
-{% endblocktrans %}
-</h3>
-<ul>
-    {% for extra in extra_list %}
-    <li>
-      <span>{{ extra.translation.name }}</span>
-      {% if extra.translation.description %}
-      <p>{{ extra.translation.description }}</p>
+<div id='skills-anchor' class='anchor'></div>
+<section id="skills">
+  <div class="row" data-equalizer>
+    <div class="title column small-4 medium-3 large-2" data-equalizer-watch>
+      <h4>Human skills</h4>
+    </div>
+    <div class='column small-8 medium-9 large-10' data-equalizer-watch>
+      <ul>
+      {% for skill in skill_list %}
+        <li >{{ skill.translation.description }}</li>
+        <br />
+      {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class='row delim-hline'></div>
+
+<div id='experiences-anchor' class='anchor'></div>
+<section id="experiences">
+  <div class="row">
+    <div class='small-12 column'>
+      <h4 class="left">Experiences</h4>
+    </div>
+  </div>
+
+  {% for exp in experience_list %}
+  <div class="row panel">
+    <div class='small-12 column'>  
+      <div class="row">
+        <div class="small-12 column">
+          <h6 class='subheader left'>
+            <strong>{{ exp.employer }}</strong> -
+            <span>{{ exp.translation.title }}</span>
+          </h6>
+          <h6 class='subheader right'>
+            <strong>{{ exp.year_from }}</strong> -
+            <strong>{% if exp.year_to %}{{ exp.year_to }}{% else %}now{% endif %}</strong>
+          </h6>  
+        </div>
+      </div>
+      {% if exp.translation.experiencetask_set.all|length %}
+      <div class="row">
+        <div class="small-12 column">
+          <ul>
+          {% for task in exp.translation.experiencetask_set.all %}
+            <li>{{ task.description }}</li>
+          {% endfor %}
+          </ul>
+        </div>  
+      </div>
       {% endif %}
-    </li>
-    {% endfor %}
-</ul>
+    </div>
+  </div>
+  {% endfor %}
+</section>
+
+<div class='row delim-hline'></div>
+
+<div id='extras-anchor' class='anchor'></div>
+<section id="extras">
+    <div class="row" data-equalizer>
+    <div class="title column small-4 medium-3 large-2" data-equalizer-watch>
+      <h4>Hobbies and Activities</h4>
+    </div>
+    <div class='column small-8 medium-9 large-10' data-equalizer-watch>
+      <ul>
+      {% for extra in extra_list %}
+        <li>
+          <strong>{{ extra.translation.name }}</strong>{% if extra.translation.description %}<span>:
+          {{ extra.translation.description }}</span>{% endif %}
+        </li>
+      {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+

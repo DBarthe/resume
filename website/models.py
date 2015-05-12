@@ -99,8 +99,8 @@ class Experience(AbstractMultilingual):
   employer = models.CharField(max_length=255, verbose_name=_('employer'))
   year_from = models.PositiveIntegerField(verbose_name=_('start year'), 
     help_text=_('the year when the job began'))
-  year_to = models.PositiveIntegerField(null=True, verbose_name=_('ending year'),
-    help_text=_('the year when the job ended, or null'))
+  year_to = models.PositiveIntegerField(null=True, blank=True, verbose_name=_('ending year'),
+    help_text=_('the year when the job ended, otherwise leave it blank'))
 
   def get_translation_set(self):
     return self.experiencetranslation_set
