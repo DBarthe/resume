@@ -1,0 +1,3 @@
+django-nested-admin
+django-grappelli
+django-bower

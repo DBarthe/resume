@@ -1,0 +1,294 @@
+{% extends 'website/base.html' %}
+{% load i18n %}
+{% load l10n %}
+{% load website_extras %}
+{% load static %}
+
+{% block 'title' %}{{ profile.firstname }} {{ profile.lastname }} {% trans 'Resume' %}{% endblock %}
+
+{% block 'scripts' %}
+<script src="{% static 'foundation/js/foundation/foundation.topbar.js' %}"></script>
+<script src="{% static 'foundation/js/foundation/foundation.equalizer.js' %}"></script>
+<script type="text/javascript" src="{% static 'website/js/app.js' %}"></script>
+<script>
+  var website = (function(website){
+    var website = website || {}
+    website.selectLanguage = function(language){
+      website.post('{% url 'set_language' %}', {
+        next : '{% url_no_i18n "index" %}',
+        language: language,
+        csrfmiddlewaretoken: website.getCookie('csrftoken')
+      })
+    }
+    return website
+  })(website)
+</script>
+{% endblock %}
+
+{% block 'body' %}
+{% get_media_prefix as MEDIA_PREFIX %}
+
+<header class="contain-to-grid sticky">
+  <nav class="top-bar" data-topbar role="navigation">
+    <ul class="title-area">
+      <li class="name"><img src="{% static 'website/images/favicon.ico' %}"></li>
+      <li class="toggle-topbar menu-icon"><a href="#"><span>{% trans 'Menu' %}</span></a></li>
+    </ul>
+    <section class="top-bar-section">
+      <ul class="left">
+        <li class='divider'></li>
+        <li class='has-dropdown'>
+          <a>{% trans 'Skills' %}</a>
+          <ul class='dropdown'>
+            <li><a href="#technical-skills-anchor">{% trans 'Computer Skills' %}</a></li>
+            <li><a href="#skills-anchor">{% trans 'Human Skills' %}</a></li>
+          </ul>
+        </li>
+        <li class='divider'></li>
+        <li><a href="#experiences-anchor">{% trans 'Experiences' %}</a></li>
+        <li class='divider'></li>
+        <li><a href="#education-anchor">{% trans 'Education' %}</a></li>
+        <li class='divider'></li>
+        <li><a href="#extras-anchor">{% trans 'Hobbies and Activities' %}</a></li>
+        <li class='divider'></li>
+        <li><a href="#contact-anchor">{% trans 'Contact' %}</a></li>
+      </ul>
+
+      <ul class="right">
+        <li class="has-dropdown">
+          {% get_current_language as LANGUAGE_CODE %}
+          {% get_available_languages as LANGUAGES %}
+          {% get_language_info_list for LANGUAGES as languages %}
+          <a>Language ({{ LANGUAGE_CODE }})</a>
+          <ul class="dropdown">
+            {% for language in languages %}
+            <li>
+              <a onclick="website.selectLanguage('{{ language.code }}')">
+                {{ language.name_local }}
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+        </li>
+      </ul>
+    </section>
+  </nav>
+</header>
+
+
+<section class="resume-category">
+  <div class='row medium-collapse large-uncollapse' data-equalizer>
+    <div class="small-12 medium-4 large-3 column text-center" data-equalizer-watch>
+      <h2>Barthélémy Delemotte</h2>
+    </div>
+    <div class='small-12 medium-5 large-6 column text-center' data-equalizer-watch>
+      <h2 class='subheader'>{% trans 'Resume' %}</h2>
+      <h3>{{ profile.translation.title }}</h3>
+    </div>
+    <div class='small-12 medium-3 column small-text-center medium-text-right' data-equalizer-watch>
+      <img class='rounded' id="profile-img" src="{% static 'website/images/barth.jpg' %}"  />
+    </div>
+  </div>
+</section>
+
+<div class='row delim-hline'></div>
+
+<div id='technical-skills-anchor' class='anchor'></div>
+<section id="technical-skills">
+  <div class="row">
+    <div class='small-12 column'>
+      <h4>{% trans 'Computer Skills' %}</h4>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class='small-12 column'>
+      <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
+      {% for category in tech_skill_category_list %}
+        <li class="techno-category">
+          <h6 class='subheader'>{{ category.label }}</h6>
+          <div class="panel">
+            <ul class="small-block-grid-3">
+            {% for skill in category.list %}
+              <li class="techno">
+                <div class='text-center'>
+                  {% if skill.icon %}
+                  <img class="techno-icon" src='{{ MEDIA_PREFIX }}{{ skill.icon }}'/><br/>
+                  <span class='techno-name'>{{ skill.name }}</span>
+                  {% endif %}
+                </div>
+              </li>
+            {% endfor %}
+            </ul>
+          </div>
+        </li>
+      {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class='row delim-hline'></div>
+
+<div id='skills-anchor' class='anchor'></div>
+<section id="skills">
+  <div class="row" data-equalizer>
+    <div class="title column small-4 medium-3 large-2" data-equalizer-watch>
+      <h4>{% trans 'Human Skills' %}</h4>
+    </div>
+    <div class='column small-8 medium-9 large-10' data-equalizer-watch>
+      <ul>
+      {% for skill in skill_list %}
+        <li >{{ skill.translation.description }}</li>
+        <br />
+      {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class='row delim-hline'></div>
+
+<div id='experiences-anchor' class='anchor'></div>
+<section id="experiences">
+  <div class="row">
+    <div class='small-12 column'>
+      <h4 class="left">{% trans 'Experiences' %}</h4>
+    </div>
+  </div>
+
+  {% for exp in experience_list %}
+  <div class="row panel">
+    <div class='small-12 column'>  
+      <div class="row">
+        <div class="small-12 column">
+          <h6 class='subheader left'>
+            <strong>{{ exp.employer }}</strong> -
+            <span>{{ exp.translation.title }}</span>
+          </h6>
+          <h6 class='subheader right'>
+            <strong>{{ exp.year_from }}</strong> -
+            <strong>{% if exp.year_to %}{{ exp.year_to }}{% else %}{% trans 'now' %}{% endif %}</strong>
+          </h6>  
+        </div>
+      </div>
+      {% if exp.translation.experiencetask_set.all|length %}
+      <div class="row">
+        <div class="small-12 column">
+          <ul>
+          {% for task in exp.translation.experiencetask_set.all %}
+            <li>{{ task.description }}</li>
+          {% endfor %}
+          </ul>
+        </div>  
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  {% endfor %}
+</section>
+
+<div class='row delim-hline'></div>
+
+<div id='education-anchor' class='anchor'></div>
+<section id="education">
+  <div class="row">
+    <div class='small-12 column'>
+      <h4 class="left">{% trans 'Education' %}</h4>
+    </div>
+  </div>
+
+  <div class="row panel">
+    <div class='small-12 column'>  
+      {% for ed in education_list %}
+      <div class="education-item row">
+
+        <div class='small-4 medium-2 column'>
+          <strong>{{ ed.year_from }}</strong> -
+          <strong>{% if ed.year_to %}{{ ed.year_to }}{% else %}{% trans 'now' %}{% endif %}</strong>
+        </div>
+
+        <div class='small-8 medium-10 column'>        
+          <div class='row'>
+            <div class='small-12 medium-6 column'>
+              <h6><strong>{{ ed.translation.school }}</strong><h6>
+            </div>
+
+            <div class='small-12 medium-6 column'>
+              {{ ed.translation.title }}
+            </div>
+          </div>
+        </div>
+
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<div class='row delim-hline'></div>
+
+<div id='extras-anchor' class='anchor'></div>
+<section id="extras">
+    <div class="row" data-equalizer>
+    <div class="title column small-4 medium-3 large-2" data-equalizer-watch>
+      <h4>{% trans 'Hobbies and Activities' %}</h4>
+    </div>
+    <div class='column small-8 medium-9 large-10' data-equalizer-watch>
+      <ul>
+      {% for extra in extra_list %}
+        <li>
+          <strong>{{ extra.translation.name }}</strong>{% if extra.translation.description %}<span>:
+          {{ extra.translation.description }}</span>{% endif %}
+        </li>
+      {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="row" data-equalizer>
+    <div id='contact-anchor' class='anchor'></div>
+    <div class="small-12 medium-6 large-4 column text-center" data-equalizer-watch>
+      <ul id='cordinate' class='vcard'>
+        <li class="fn">{{ profile.firstname }} {{ profile.lastname|upper }}</li>
+        <li class="email"><a href="mailto:{{ profile.email }}"><strong>{{ profile.email }}</strong></a></li>
+        <li class="birthdate">{{ profile.birthdate|localize }} ({{ profile.age }} {% trans 'years old'%})</li>
+        <li class="street-address">{{ profile.street_address }}</li>
+        <li class="locality"><span class="zip">{{ profile.zip }}</span> {{ profile.city }}, <span class="state">{{ profile.country }}</span></li>
+        <li>{{ profile.phone }}</li>
+      </ul>
+    </div>
+    <div class='small-12 medium-3 large-4 column' data-equalizer-watch>
+        <div class="link text-center">
+          <a href="{{ profile.github }}">
+            <img src="{% static 'website/images/Octocat.png' %}"/><br/>
+            <strong>GitHub</strong>
+          </a>
+        </div>
+    </div>
+    <div class='small-12 medium-3 large-4 column text-center' data-equalizer-watch>
+        <div class="link">
+          <a href="http://git.dbarth.eu/git/web/resume.git/tree/">
+            <img src="{% static 'website/images/git.png' %}"/><br/>
+            <strong>{% trans 'View the source code' %}<br />{% trans 'of this site' %}</strong>
+          </a>
+        </div>
+        <a href="http://www.djangoproject.com/"><img src="https://www.djangoproject.com/m/img/badges/djangomade124x25.gif" border="0" alt="Made with Django." title="Made with Django." /></a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 column text-center">
+      <a href="http://dbarth.eu">
+        <img src="{% static 'website/images/favicon.ico' %}"><br/>
+        {% trans 'Root of my web server' %}
+      </a>
+    </div>
+  </div>
+
+</footer>
+
+{% endblock %}
+

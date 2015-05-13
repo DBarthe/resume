@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% load i18n %}
+{% load static %}
+{% get_current_language as LANGUAGE_CODE %}
+<!--[if IE 9]><html class="lt-ie10" lang="{{ LANGUAGE_CODE }}" > <![endif]-->
+<html class="no-js" lang="{{ LANGUAGE_CODE }}" >
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block 'title' %}{% endblock %}</title>
+  
+  <link rel="shortcut icon" href="{% static 'website/images/favicon.ico' %}">
+
+  <link rel="stylesheet" href="{% static 'foundation/css/normalize.css' %}">
+  <link rel="stylesheet" href="{% static 'foundation/css/foundation.css' %}">
+  <link rel="stylesheet" href="{% static 'website/css/app.css' %}">
+  {% block 'stylesheets' %}{% endblock %}
+
+  <script src="{% static 'modernizr/modernizr.js' %}"></script>
+</head>
+<body>
+  {% block 'body' %}{% endblock %}
+  <script src="{% static 'jquery/dist/jquery.js' %}"></script>
+  <script src="{% static 'foundation/js/foundation.js' %}"></script>
+  {% block 'scripts' %}{% endblock %}
+  {% block 'start-foundation' %}
+  <script>
+    $(document).foundation();
+  </script>
+  {% endblock %}
+</body>
+</html>

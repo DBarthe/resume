@@ -1,0 +1,84 @@
+.delim-hline {
+  height: 0;
+  padding: 0;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-bottom: solid 1px lightgrey;
+}
+
+/*
+ * Fix bug with internal link and sticky bar 
+ */
+.anchor {
+  position: absolute;
+  margin: -4.15rem
+}
+
+header ul.title-area li.name img {
+  margin-top: 10%;
+  margin-bottom: 10%;
+  margin-right: 0.3rem;
+  margin-left: 0.3rem;
+  height: 80%;
+}
+
+#profile-img {
+  max-width: 150px;
+  max-height: 150px;
+}
+
+.resume-category {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.techno {
+  padding: 5px !important;
+}
+.techno-icon {
+  max-width: 20px;
+  max-height: 20px;  
+}
+.techno-name {
+  font-size: 0.65em;
+  font-weight: bold;
+}
+
+.techno-category *.panel {
+  margin: 0;
+  padding: 5px;
+}
+
+#skills div.title, #extras div.title {
+  border-right: solid 1px lightgrey;
+}
+#skills ul, #extras ul {
+  padding-top: 0.5rem;
+}
+
+.education-item {
+  margin-bottom: 0.5rem !important;
+  border-bottom: solid 1px lightgrey;
+}
+
+footer {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border-top: solid 1px #D8D8D8;
+  background-color: #F2F2F2;
+  width: 100%;
+}
+
+#cordinate {
+  margin-bottom: 0;
+  background-color: white;
+}
+
+footer div.link img {
+  max-width: 128px;
+  max-height: 128px;
+}
+
+footer div.column, footer div.columns {
+  margin-bottom: 1rem;
+}
