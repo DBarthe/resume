@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-12 23:00+0200\n"
+"POT-Creation-Date: 2015-05-13 12:59+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -77,7 +77,8 @@ msgstr "icône"
 
 #: website/models.py:70
 msgid "The youngest translation for a language will be selected"
-msgstr "La traduction la plus récente pour un langage particulier sera selectionnée"
+msgstr ""
+"La traduction la plus récente pour un langage particulier sera selectionnée"
 
 #: website/models.py:71
 msgid "language"
@@ -121,23 +122,27 @@ msgstr "année de fin"
 
 #: website/models.py:103
 msgid "the year when the job ended, otherwise leave it blank"
-msgstr "l'année où le travail s'est terminé, laisser vide si il est toujours actif"
+msgstr ""
+"l'année où le travail s'est terminé, laisser vide si il est toujours actif"
 
-#: website/models.py:113 website/models.py:139
+#: website/models.py:113 website/models.py:139 website/models.py:199
 msgid "title"
 msgstr "titre"
 
 #: website/models.py:118
 msgid "Some lines that describe how the task was amazing !"
-msgstr "Quelques lignes pour montrer que le travail effectué était impréssionnant"
+msgstr ""
+"Quelques lignes pour montrer que le travail effectué était impréssionnant"
 
 #: website/models.py:126
 msgid "the year when the formation began"
-msgstr "l'année où la formation a commencé "
+msgstr "l'année où la formation a commencé"
 
 #: website/models.py:128
 msgid "the year when the formation ended, otherwise leave it blank"
-msgstr "l'année où la formation s'est terminée, laisser vide si elle est toujours en cours"
+msgstr ""
+"l'année où la formation s'est terminée, laisser vide si elle est toujours en "
+"cours"
 
 #: website/models.py:138
 msgid "school"
@@ -148,6 +153,54 @@ msgstr "école/université"
 #| msgid "A one or two lines description of the skill"
 msgid "An optional description of this extra"
 msgstr "Une ou deux lignes de description de la compétence"
+
+#: website/models.py:171
+msgid "first name"
+msgstr "prénom"
+
+#: website/models.py:172
+#, fuzzy
+#| msgid "name"
+msgid "last name"
+msgstr "nom de famille"
+
+#: website/models.py:173
+msgid "birth date"
+msgstr "date de naissance"
+
+#: website/models.py:175
+msgid "email address"
+msgstr "adresse email"
+
+#: website/models.py:176
+msgid "phone number"
+msgstr "numéro de téléphone"
+
+#: website/models.py:178
+msgid "street address"
+msgstr "numéro et nom de rue"
+
+#: website/models.py:179
+msgid "zip code"
+msgstr "code postal"
+
+#: website/models.py:180
+#, fuzzy
+#| msgid "name"
+msgid "city name"
+msgstr "ville"
+
+#: website/models.py:181
+msgid "country name"
+msgstr "pays"
+
+#: website/models.py:183
+msgid "url of the github account"
+msgstr "url du compte github"
+
+#: website/models.py:200
+msgid "current position in life (ex: student...)"
+msgstr "position actuelle dans la vie (ex: étudiant...)"
 
 #: website/templates/website/index.html:7
 #: website/templates/website/index.html:85
@@ -163,10 +216,12 @@ msgid "Skills"
 msgstr "Compétences"
 
 #: website/templates/website/index.html:43
+#: website/templates/website/index.html:100
 msgid "Computer Skills"
 msgstr "Compétences Machines"
 
 #: website/templates/website/index.html:44
+#: website/templates/website/index.html:137
 msgid "Human Skills"
 msgstr "Compétences Humaines"
 
@@ -191,96 +246,108 @@ msgstr "Intérêts et Activités"
 msgid "Contact"
 msgstr "Contact"
 
-#: website/templates/website/index.html:86
-msgid "Computer Science Student"
-msgstr "Étudiant en Informatique"
+#: website/templates/website/index.html:171
+#: website/templates/website/old_index.html:62
+msgid "now"
+msgstr "présent"
 
-#: website/templates/website/index.html:100
-msgid "Computer skills"
-msgstr "Compétences Machines"
+#: website/templates/website/index.html:257
+msgid "years old"
+msgstr "ans"
 
-#: website/templates/website/index.html:137
-msgid "Human skills"
-msgstr "Compétences Humaines"
-
-#: website/templates/website/index.html:274
+#: website/templates/website/index.html:275
 msgid "View the source code"
 msgstr "Voir le code source"
 
-#: website/templates/website/index.html:274
+#: website/templates/website/index.html:275
 msgid "of this site"
 msgstr "du site"
 
+#: website/templates/website/index.html:286
+msgid "Root of my web server"
+msgstr "Racine de mon server web"
+
 #: website/templates/website/old_index.html:22
 msgid "Technical Skills"
-msgstr "Compétences techniques"
+msgstr ""
 
 #: website/templates/website/old_index.html:40
+#, fuzzy
+#| msgid "Skills"
 msgid ""
 "\n"
 "  Skill"
 msgid_plural "Skills\n"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Compétences"
+msgstr[1] "Compétences"
 
 #: website/templates/website/old_index.html:51
+#, fuzzy
+#| msgid "Experiences"
 msgid ""
 "\n"
 "  Experience"
 msgid_plural "Experiences\n"
-msgstr[0] ""
-msgstr[1] ""
-
-#: website/templates/website/old_index.html:62
-msgid "now"
-msgstr ""
+msgstr[0] "Expériences"
+msgstr[1] "Expériences"
 
 #: website/templates/website/old_index.html:76
+#, fuzzy
+#| msgid "Hobbies and Activities"
 msgid ""
 "\n"
 "  Hobby and Activity"
 msgid_plural "Hobbies and Activities\n"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Intérêts et Activités"
+msgstr[1] "Intérêts et Activités"
 
-#: website/views.py:35
+#: website/views.py:36
 msgctxt "category"
 msgid "Programming Language"
 msgid_plural "Programming Languages"
 msgstr[0] "Langage de Programmation"
 msgstr[1] "Langages de Programmations"
 
-#: website/views.py:37
+#: website/views.py:38
 msgctxt "category"
 msgid "Framework"
 msgid_plural "Frameworks"
 msgstr[0] "Framework"
 msgstr[1] "Frameworks"
 
-#: website/views.py:39
+#: website/views.py:40
 msgctxt "category"
 msgid "Operating System"
 msgid_plural "Operating Systems"
 msgstr[0] "Système d'Exploitation"
 msgstr[1] "Systèmes d'Exploitation"
 
-#: website/views.py:41
+#: website/views.py:42
 msgctxt "category"
 msgid "Software"
 msgid_plural "Softwares"
 msgstr[0] "Logiciel"
 msgstr[1] "Logiciels"
 
-#: website/views.py:43
+#: website/views.py:44
 msgctxt "category"
 msgid "Database"
 msgid_plural "Databases"
 msgstr[0] "Base de données"
 msgstr[1] "Bases de données"
 
-#: website/views.py:45
+#: website/views.py:46
 msgctxt "category"
 msgid "Other"
 msgid_plural "Others"
 msgstr[0] "Autre"
 msgstr[1] "Autres"
+
+#~ msgid "Computer skills"
+#~ msgstr "Compétences Machines"
+
+#~ msgid "Human skills"
+#~ msgstr "Compétences Humaines"
+
+#~ msgid "Computer Science Student"
+#~ msgstr "Étudiant en Informatique"

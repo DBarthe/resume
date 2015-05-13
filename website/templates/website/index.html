@@ -97,7 +97,7 @@
 <section id="technical-skills">
   <div class="row">
     <div class='small-12 column'>
-      <h4>{% trans 'Computer skills' %}</h4>
+      <h4>{% trans 'Computer Skills' %}</h4>
     </div>
   </div>
 
@@ -134,7 +134,7 @@
 <section id="skills">
   <div class="row" data-equalizer>
     <div class="title column small-4 medium-3 large-2" data-equalizer-watch>
-      <h4>{% trans 'Human skills' %}</h4>
+      <h4>{% trans 'Human Skills' %}</h4>
     </div>
     <div class='column small-8 medium-9 large-10' data-equalizer-watch>
       <ul>
@@ -168,7 +168,7 @@
           </h6>
           <h6 class='subheader right'>
             <strong>{{ exp.year_from }}</strong> -
-            <strong>{% if exp.year_to %}{{ exp.year_to }}{% else %}now{% endif %}</strong>
+            <strong>{% if exp.year_to %}{{ exp.year_to }}{% else %}{% trans 'now' %}{% endif %}</strong>
           </h6>  
         </div>
       </div>
@@ -205,7 +205,7 @@
 
         <div class='small-4 medium-2 column'>
           <strong>{{ ed.year_from }}</strong> -
-          <strong>{% if ed.year_to %}{{ ed.year_to }}{% else %}now{% endif %}</strong>
+          <strong>{% if ed.year_to %}{{ ed.year_to }}{% else %}{% trans 'now' %}{% endif %}</strong>
         </div>
 
         <div class='small-8 medium-10 column'>        
