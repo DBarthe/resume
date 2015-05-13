@@ -164,3 +164,37 @@ class ExtraTranslation(AbstractTranslation):
 
   def __unicode__(self):
     return self.name
+
+class Profile(AbstractMultilingual):
+  date = models.DateTimeField(auto_now_add=True)
+
+  firstname = models.CharField(max_length=31, verbose_name=_('first name'))
+  lastname = models.CharField(max_length=31, verbose_name=_('last name'))
+  birthdate = models.DateField(verbose_name=_('birth date'))
+
+  email = models.EmailField(verbose_name=_('email address'))
+  phone = models.CharField(max_length=31, verbose_name=_('phone number'))
+
+  street_address = models.CharField(max_length=255, verbose_name=_('street address'))
+  zip_code = models.CharField(max_length=15, verbose_name=_('zip code'))
+  city = models.CharField(max_length=31, verbose_name=_('city name'))
+  country = models.CharField(max_length=31, verbose_name=_('country name'))
+
+  github = models.URLField(verbose_name=_('url of the github account'))
+
+  def get_translation_set(self):
+    return self.profiletranslation_set
+
+  def __unicode__(self):
+    return self.firstname + " " + self.lastname
+
+  def age(self):
+      from datetime import date
+      today = date.today()
+      born = self.birthdate
+      return today.year - born.year - ((today.month, today.day) < (born.month, born.day))
+
+class ProfileTranslation(AbstractTranslation):
+  profiles = models.ForeignKey(Profile)
+  title = models.CharField(max_length=255, verbose_name=_('title'),
+    help_text=_('current position in life (ex: student...)'))

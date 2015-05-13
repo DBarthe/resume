@@ -4,7 +4,7 @@ from django.utils.translation import npgettext
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import ensure_csrf_cookie
 
-from .models import TechnicalSkill as TechSkill, Extra, Skill, Experience, Education
+from .models import TechnicalSkill as TechSkill, Extra, Skill, Experience, Education, Profile
 
 class Index(TemplateView):
   template_name = 'website/index.html'
@@ -20,6 +20,7 @@ class Index(TemplateView):
     context['experience_list'] = self.make_experience_list()
     context['education_list'] = self.make_education_list()
     context['extra_list'] = self.make_extra_list()
+    context['profile'] = self.get_profile()   
     return context
 
   def make_tech_skill_category_list(self):
@@ -63,3 +64,12 @@ class Index(TemplateView):
 
   def make_extra_list(self):
     return self.make_translated_list(Extra.objects.order_by('-weight'))
+
+  def get_profile(self):
+    query = Profile.objects.order_by('-date').first()
+    if query is None:
+      return None # let's see what happens (should not be reached if database is fully completed)
+    else:
+      fake_queryset = [query] # to use self.make_translated_list
+      result_list = self.make_translated_list(fake_queryset)
+      return (result_list[0] if result_list else None)

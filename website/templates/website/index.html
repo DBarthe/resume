@@ -4,7 +4,7 @@
 {% load website_extras %}
 {% load static %}
 
-{% block 'title' %}Barthelemy Delemotte {% trans 'Resume' %}{% endblock %}
+{% block 'title' %}{{ profile.firstname }} {{ profile.lastname }}{% trans 'Resume' %}{% endblock %}
 
 {% block 'scripts' %}
 <script src="{% static 'foundation/js/foundation/foundation.topbar.js' %}"></script>
@@ -83,7 +83,7 @@
     </div>
     <div class='small-12 medium-5 large-6 column text-center' data-equalizer-watch>
       <h2 class='subheader'>{% trans 'Resume' %}</h2>
-      <h3>{% trans 'Computer Science Student' %}</h3>
+      <h3>{{ profile.translation.title }}</h3>
     </div>
     <div class='small-12 medium-3 column small-text-center medium-text-right' data-equalizer-watch>
       <img class='rounded' id="profile-img" src="{% static 'website/images/barth.jpg' %}"  />
@@ -252,16 +252,17 @@
     <div id='contact-anchor' class='anchor'></div>
     <div class="small-12 medium-6 large-4 column text-center" data-equalizer-watch>
       <ul id='cordinate' class='vcard'>
-        <li class="fn">Barthélémy DELEMOTTE</li>
-        <li class="email"><a href="#">barthelemy.delemotte@gmail.com</a></li>
-        <li class="street-address">29 bis rue de belle vue</li>
-        <li class="locality"><span class="zip">59800</span> Lille, <span class="state">France</span></li>
-        <li>06.59.34.29.84</li>
+        <li class="fn">{{ profile.firstname }} {{ profile.lastname|upper }}</li>
+        <li class="email"><a href="mailto:{{ profile.email }}"><strong>{{ profile.email }}</strong></a></li>
+        <li class="birthdate">{{ profile.birthdate|localize }} ({{ profile.age }} {% trans 'years old'%})</li>
+        <li class="street-address">{{ profile.street_address }}</li>
+        <li class="locality"><span class="zip">{{ profile.zip }}</span> {{ profile.city }}, <span class="state">{{ profile.country }}</span></li>
+        <li>{{ profile.phone }}</li>
       </ul>
     </div>
     <div class='small-12 medium-3 large-4 column' data-equalizer-watch>
         <div class="link text-center">
-          <a href="https://github.com/DBarthe">
+          <a href="{{ profile.github }}">
             <img src="{% static 'website/images/Octocat.png' %}"/><br/>
             <strong>GitHub</strong>
           </a>
@@ -279,7 +280,8 @@
   </div>
 
   <div class="row">
-    <div class="small-3 small-centered column text-center">
+    <div class="small-12 column text-center">
+      <a href="http://dbarth.eu">{% trans 'Root of my web server' %}</a>
     </div>
   </div>
 
