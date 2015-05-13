@@ -4,7 +4,7 @@
 {% load website_extras %}
 {% load static %}
 
-{% block 'title' %}{{ profile.firstname }} {{ profile.lastname }}{% trans 'Resume' %}{% endblock %}
+{% block 'title' %}{{ profile.firstname }} {{ profile.lastname }} {% trans 'Resume' %}{% endblock %}
 
 {% block 'scripts' %}
 <script src="{% static 'foundation/js/foundation/foundation.topbar.js' %}"></script>
