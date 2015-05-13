@@ -31,7 +31,7 @@
 <header class="contain-to-grid sticky">
   <nav class="top-bar" data-topbar role="navigation">
     <ul class="title-area">
-      <li class="name"></li>
+      <li class="name"><img src="{% static 'website/images/favicon.ico' %}"></li>
       <li class="toggle-topbar menu-icon"><a href="#"><span>{% trans 'Menu' %}</span></a></li>
     </ul>
     <section class="top-bar-section">
@@ -281,7 +281,10 @@
 
   <div class="row">
     <div class="small-12 column text-center">
-      <a href="http://dbarth.eu">{% trans 'Root of my web server' %}</a>
+      <a href="http://dbarth.eu">
+        <img src="{% static 'website/images/favicon.ico' %}"><br/>
+        {% trans 'Root of my web server' %}
+      </a>
     </div>
   </div>
 
