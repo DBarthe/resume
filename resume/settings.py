@@ -137,3 +137,8 @@ BOWER_COMPONENTS_ROOT = os.path.join(BASE_DIR, 'components')
 BOWER_INSTALLED_APPS = (
   'foundation',
 )
+
+# Fixtures (to backup database)
+FIXTURE_DIRS = (
+  os.path.join(BASE_DIR, 'fixtures'),
+) 
