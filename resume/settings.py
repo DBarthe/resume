@@ -29,6 +29,9 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['resume.dbarth.eu']
 
+# Security
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_BROWSER_XSS_FILTER = True
 
 # Application definition
 
