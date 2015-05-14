@@ -2,11 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://resume.dbarth.eu/</loc>
+    <xhtml:link 
+                 rel="alternate"
+                 hreflang="fr"
+                 href="https://resume.dbarth.eu/fr/"
+                 />
+    <xhtml:link 
+                 rel="alternate"
+                 hreflang="en"
+                 href="https://resume.dbarth.eu/en/"
+                 />
+  </url>
+
+  <url>
     <loc>https://resume.dbarth.eu/en/</loc>
     <xhtml:link 
                  rel="alternate"
                  hreflang="fr"
                  href="https://resume.dbarth.eu/fr/"
+                 />
+    <xhtml:link 
+                 rel="alternate"
+                 hreflang="en"
+                 href="https://resume.dbarth.eu/en/"
                  />
   </url>
   <url>
@@ -16,5 +35,11 @@
                  hreflang="en"
                  href="https://resume.dbarth.eu/en/"
                  />
+   <xhtml:link 
+                 rel="alternate"
+                 hreflang="fr"
+                 href="https://resume.dbarth.eu/fr/"
+                 />
+
   </url>
 </urlset>
