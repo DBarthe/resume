@@ -31,7 +31,7 @@
 <header class="contain-to-grid sticky">
   <nav class="top-bar" data-topbar role="navigation">
     <ul class="title-area">
-      <li class="name"><img src="{% static 'website/images/favicon.ico' %}"></li>
+      <li class="name"><img src="{% static 'website/images/favicon.ico' %}" alt="favicon"></li>
       <li class="toggle-topbar menu-icon"><a href="#"><span>{% trans 'Menu' %}</span></a></li>
     </ul>
     <section class="top-bar-section">
@@ -86,7 +86,7 @@
       <h3>{{ profile.translation.title }}</h3>
     </div>
     <div class='small-12 medium-3 column small-text-center medium-text-right' data-equalizer-watch>
-      <img class='rounded' id="profile-img" src="{% static 'website/images/barth.jpg' %}"  />
+      <img class='rounded' id="profile-img" alt="identity image" src="{% static 'website/images/barth.jpg' %}"  />
     </div>
   </div>
 </section>
@@ -113,9 +113,11 @@
               <li class="techno">
                 <div class='text-center'>
                   {% if skill.icon %}
-                  <img class="techno-icon" src='{{ MEDIA_PREFIX }}{{ skill.icon }}'/><br/>
-                  <span class='techno-name'>{{ skill.name }}</span>
+                  <div class='text-centered'>
+                    <img class="techno-icon" alt="third logo" src='{{ MEDIA_PREFIX }}{{ skill.icon }}'/>
+                  </div>
                   {% endif %}
+                  <span class='techno-name'>{{ skill.name }}</span>
                 </div>
               </li>
             {% endfor %}
@@ -139,8 +141,7 @@
     <div class='column small-8 medium-9 large-10' data-equalizer-watch>
       <ul>
       {% for skill in skill_list %}
-        <li >{{ skill.translation.description }}</li>
-        <br />
+        <li>{{ skill.translation.description }}</li>
       {% endfor %}
       </ul>
     </div>
@@ -263,7 +264,9 @@
     <div class='small-12 medium-3 large-4 column' data-equalizer-watch>
         <div class="link text-center">
           <a href="{{ profile.github }}">
-            <img src="{% static 'website/images/Octocat.png' %}"/><br/>
+            <div class="text-center">
+              <img alt="github octocat" src="{% static 'website/images/Octocat.png' %}"/>
+            </div>
             <strong>GitHub</strong>
           </a>
         </div>
@@ -271,19 +274,23 @@
     <div class='small-12 medium-3 large-4 column text-center' data-equalizer-watch>
         <div class="link">
           <a href="http://git.dbarth.eu/git/web/resume.git/tree/">
-            <img src="{% static 'website/images/git.png' %}"/><br/>
+            <div class="text-center">
+              <img img="git logo" src="{% static 'website/images/git.png' %}"/>
+            </div>
             <strong>{% trans 'View the source code' %}<br />{% trans 'of this site' %}</strong>
           </a>
         </div>
-        <a href="http://www.djangoproject.com/"><img src="https://www.djangoproject.com/m/img/badges/djangomade124x25.gif" border="0" alt="Made with Django." title="Made with Django." /></a>
+        <a href="http://www.djangoproject.com/"><img src="https://www.djangoproject.com/m/img/badges/djangomade124x25.gif" style="border: 0;" alt="Made with Django." title="Made with Django." /></a>
     </div>
   </div>
 
   <div class="row">
     <div class="small-12 column text-center">
       <a href="http://dbarth.eu">
-        <img src="{% static 'website/images/favicon.ico' %}"><br/>
-        {% trans 'Root of my web server' %}
+        <div class="text-center">
+          <img src="{% static 'website/images/favicon.ico' %}" alt="favicon">  
+        </div>
+        <strong>{% trans 'Root of my web server' %}</strong>
       </a>
     </div>
   </div>

@@ -56,6 +56,10 @@ header ul.title-area li.name img {
   padding-top: 0.5rem;
 }
 
+#skills li {
+  margin-bottom: 1rem;
+}
+
 .education-item {
   margin-bottom: 0.5rem !important;
   border-bottom: solid 1px lightgrey;
