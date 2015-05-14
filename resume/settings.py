@@ -149,4 +149,4 @@ BOWER_INSTALLED_APPS = (
 # Fixtures (to backup database)
 FIXTURE_DIRS = (
   os.path.join(BASE_DIR, 'fixtures'),
-) 
+)
