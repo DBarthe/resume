@@ -73,3 +73,11 @@ class Index(TemplateView):
       fake_queryset = [query] # to use self.make_translated_list
       result_list = self.make_translated_list(fake_queryset)
       return (result_list[0] if result_list else None)
+
+
+class Sitemap(TemplateView):
+  template_name = 'website/sitemap.xml'
+
+  def get(self, request, *args, **kwargs):
+    context = self.get_context_data()
+    return self.render_to_response(context, content_type="text/xml; charset=utf-8")
