@@ -29,7 +29,7 @@ class TechnicalSkill(models.Model):
     verbose_name=_('weight'),
     help_text=_('Will determine the display order, higher first')
   )
-  icon = models.FileField(null=True, verbose_name=_('icon'))
+  icon = models.FileField(null=True, blank=True, verbose_name=_('icon'))
 
   def __unicode__(self):
     return self.name
