@@ -95,3 +95,8 @@ footer div.link img {
 footer div.column, footer div.columns {
   margin-bottom: 1rem;
 }
+
+footer div.row.last div.column,
+footer div.row.last div.columns {
+  margin-bottom: 0;
+}
