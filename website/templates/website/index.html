@@ -114,7 +114,13 @@
                 <div class='text-center'>
                   {% if skill.icon %}
                   <div class='text-center'>
-                    <img class="techno-icon" alt="third logo" src='{{ MEDIA_PREFIX }}{{ skill.icon }}'/>
+                    {% if skill.icon_attribution %}
+                    <a href="{{ skill.icon_attribution }}">
+                      <img class="techno-icon" alt="{{ skill.name }}" src='{{ MEDIA_PREFIX }}{{ skill.icon }}'/>
+                    </a>
+                    {% else %}
+                    <img class="techno-icon" alt="{{ skill.name }}" src='{{ MEDIA_PREFIX }}{{ skill.icon }}'/>
+                    {% endif %}
                   </div>
                   <span class='techno-name'>{{ skill.name }}</span>
                   {% else %}

@@ -30,6 +30,8 @@ class TechnicalSkill(models.Model):
     help_text=_('Will determine the display order, higher first')
   )
   icon = models.FileField(null=True, blank=True, verbose_name=_('icon'))
+  icon_attribution = models.URLField(null=True, blank=True, verbose_name=_("a link to the author's website"),
+    help_text=_('set it if the license requires it'))
 
   def __unicode__(self):
     return self.name
