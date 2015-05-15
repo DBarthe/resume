@@ -37,11 +37,20 @@ header ul.title-area li.name img {
 }
 .techno-icon {
   max-width: 20px;
-  max-height: 20px;  
+  max-height: 20px;
 }
+
 .techno-name {
-  font-size: 0.65em;
+  font-size: 0.8rem;
   font-weight: bold;
+}
+
+.techno-name-ctn.no-icon {
+  margin-top: 10px;
+}
+
+.techno-name.no-icon {
+  font-size: 1rem;
 }
 
 .techno-category *.panel {

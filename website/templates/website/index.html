@@ -113,11 +113,15 @@
               <li class="techno">
                 <div class='text-center'>
                   {% if skill.icon %}
-                  <div class='text-centered'>
+                  <div class='text-center'>
                     <img class="techno-icon" alt="third logo" src='{{ MEDIA_PREFIX }}{{ skill.icon }}'/>
                   </div>
-                  {% endif %}
                   <span class='techno-name'>{{ skill.name }}</span>
+                  {% else %}
+                  <div class='techno-name-ctn no-icon text-center'>
+                    <span class='techno-name no-icon'>{{ skill.name }}</span>
+                  </div>
+                  {% endif %}
                 </div>
               </li>
             {% endfor %}
