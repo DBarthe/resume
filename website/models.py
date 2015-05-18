@@ -170,6 +170,8 @@ class ExtraTranslation(AbstractTranslation):
 class Profile(AbstractMultilingual):
   date = models.DateTimeField(auto_now_add=True)
 
+  picture = models.FileField(null=True, blank=True, verbose_name=_('picture'))
+
   firstname = models.CharField(max_length=31, verbose_name=_('first name'))
   lastname = models.CharField(max_length=31, verbose_name=_('last name'))
   birthdate = models.DateField(verbose_name=_('birth date'))
