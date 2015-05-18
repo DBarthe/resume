@@ -87,7 +87,7 @@
       <h3>{{ profile.translation.title }}</h3>
     </div>
     <div class='small-12 medium-3 column small-text-center medium-text-right' data-equalizer-watch>
-      <img class='rounded' id="profile-img" alt="identity image" src="{% static 'website/images/barth.jpg' %}"  />
+      <img class='rounded' id="profile-img" alt="identity image" src="{{ MEDIA_PREFIX }}{{ profile.picture }}"  />
     </div>
   </div>
 </section>
