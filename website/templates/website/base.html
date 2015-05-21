@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 {% load i18n %}
 {% load static %}
+{% load compress %}
 {% get_current_language as LANGUAGE_CODE %}
 <!--[if IE 9]><html class="lt-ie10" lang="{{ LANGUAGE_CODE }}" > <![endif]-->
 <html class="no-js" lang="{{ LANGUAGE_CODE }}" >
@@ -11,15 +12,20 @@
   
   <link rel="shortcut icon" href="{% static 'website/images/favicon.ico' %}">
 
+  {% compress css %}
   <link rel="stylesheet" href="{% static 'foundation/css/normalize.css' %}">
   <link rel="stylesheet" href="{% static 'foundation/css/foundation.css' %}">
   <link rel="stylesheet" href="{% static 'website/css/app.css' %}">
   {% block 'stylesheets' %}{% endblock %}
+  {% endcompress %}
 
+  {% compress js %}
   <script src="{% static 'modernizr/modernizr.js' %}"></script>
+  {% endcompress %}
 </head>
 <body>
   {% block 'body' %}{% endblock %}
+  {% compress js %}
   <script src="{% static 'jquery/dist/jquery.js' %}"></script>
   <script src="{% static 'foundation/js/foundation.js' %}"></script>
   {% block 'scripts' %}{% endblock %}
@@ -28,5 +34,6 @@
     $(document).foundation();
   </script>
   {% endblock %}
+  {% endcompress %}
 </body>
 </html>
