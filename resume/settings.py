@@ -50,6 +50,7 @@ INSTALLED_APPS = (
   'django.contrib.staticfiles',
   'nested_admin',
   'djangobower',
+  'compressor',
   'website',
 )
 
@@ -129,6 +130,7 @@ STATICFILES_FINDERS = (
   'django.contrib.staticfiles.finders.FileSystemFinder',
   'django.contrib.staticfiles.finders.AppDirectoriesFinder',
   'djangobower.finders.BowerFinder',
+  'compressor.finders.CompressorFinder',
 )
 
 
@@ -150,3 +152,8 @@ BOWER_INSTALLED_APPS = (
 FIXTURE_DIRS = (
   os.path.join(BASE_DIR, 'fixtures'),
 )
+
+
+# compressor
+COMPRESS_ENABLED = not DEBUG
+
